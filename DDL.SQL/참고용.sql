@@ -7,7 +7,6 @@ SELECT * FROM MENU_MA order by menu_no;
 
 SELECT COUNT(1), MENU_NM FROM MENU_MA GROUP BY MENU_NM;
 SELECT * FROM MENU_MA WHERE MENU_NM LIKE '더블 샷% 에스프레소';
-
 UPDATE MENU_MA
 SET
 MENU_NM = '더블 샷 딸기 에스프레소',
@@ -21,6 +20,17 @@ ALTER TABLE FURN_MA MODIFY(FURN_HOME VARCHAR2(100));
 create sequence sto_ma_seq;
 drop sequence sto_ma_seq;
 delete from sto_ma;
-alter table sto_ma modify(sto_grd varchar2(100));
-
+alter table sto_ma modify(sto_grd NUMBER);
 select * from sto_ma;
+
+CREATE SEQUENCE GRADE_SEQ;
+drop sequence grade_seq;
+ALTER TABLE GRADE MODIFY(GRD_BENE VARCHAR2(1000));
+select * from grade order by grd_no;
+delete from grade;
+
+CREATE SEQUENCE PARK_MA_SEQ;
+DROP SEQUENCE PARK_MA_SEQ;
+ALTER TABLE PARK_MA MODIFY(CAR_NO VARCHAR2(20));
+SELECT * FROM PARK_MA ORDER BY PARK_NO;
+DELETE FROM PARK_MA;

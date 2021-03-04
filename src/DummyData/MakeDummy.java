@@ -21,7 +21,79 @@ public class MakeDummy {
 
 //	private static LocalDate randDate = createRandomDate(2021, 2022);
 	public static void main(String[] args) {
-		sto_ma_dummy();
+
+	}
+	
+	public static void park_ma_dummy() {
+		try {
+			conn = util.open();
+
+			String[] carNoTwo = { "가", "나", "다", "라", "마", "바", "공", "해", "육", "합", "국", "허", "하", "호", "배" };
+			for (int i = 0; i < 20; i++) {
+				int carOne = (rand.nextInt(99) + 1);
+				int carThr = (rand.nextInt(9999) + 1);
+				String carNoOne = String.format("%02d", carOne);
+				String carNoThr = String.format("%04d", carThr);
+				String carNo = carNoOne + carNoTwo[rand.nextInt(carNoTwo.length)] + " " + carNoThr;
+				System.out.println(carNo);
+				String sql = "INSERT INTO PARK_MA(PARK_NO, CAR_NO, ENTRY_TM, EXIT_TM, DEL_YN) VALUES(PARK_MA_SEQ.NEXTVAL, ?, DEFAULT, ?, DEFAULT)";
+				pstat = conn.prepareStatement(sql);
+				pstat.setString(1, carNo);
+//				pstat.setDate(2, exit_date);
+				pstat.execute();
+				pstat.close();
+			}
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void grade_dummy() {
+		try {
+			conn = util.open();
+
+			int i = 0;
+			String[] nmOne = { "브론즈", "실버", "골드", "다이아", "플래티넘" };
+			String[] beneOne = { "캐시백 1%, 포인트 적립 1%", "캐시백 3%, 포인트 적립 3%", "캐시백 8%, 포인트 적립 8%, vip 혜택 적용",
+					"캐시백 15%, 포인트 적립 15%, vip 혜택 적용", "캐시백 20%, 포인트 적립 20%, vip 혜택 적용, 라운지 이용 가능, 명절(설, 추석) 선물세트 증정" };
+			for (int j = 0; j < 5; j++) {
+
+				String grdNm = nmOne[j];
+				String grdBene = "";
+
+				switch (grdNm) {
+				case "브론즈":
+					grdBene = beneOne[0];
+					break;
+				case "실버":
+					grdBene = beneOne[1];
+					break;
+				case "골드":
+					grdBene = beneOne[2];
+					break;
+				case "다이아":
+					grdBene = beneOne[3];
+					break;
+				case "플래티넘":
+					grdBene = beneOne[4];
+					break;
+				default:
+					break;
+				}
+
+				String sql = "INSERT INTO GRADE(GRD_NO, GRD_NM, GRD_BENE, DEL_YN) VALUES(GRADE_SEQ.NEXTVAL, ?, ?, DEFAULT)";
+				pstat = conn.prepareStatement(sql);
+				pstat.setString(1, grdNm);
+				pstat.setString(2, grdBene);
+				pstat.execute();
+				pstat.close();
+			}
+			conn.close();
+			System.out.println("grade_dummy inserted");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static void sto_ma_dummy() {
@@ -30,7 +102,7 @@ public class MakeDummy {
 
 			String[] nmOne = { "도농점", "왕십리점", "청량리점", "회기점", "동대문점", "상봉점", "덕소점", "구리점" };
 			String[] locOne = { "도농동", "구리시", "왕십리", "청량리", "회기동", "동대문구", "중랑구", "가운동" };
-			for (int i = 0; i < 5; i++) {
+			for (int i = 0; i < 10; i++) {
 
 				String stoNm = "스타벅스 " + nmOne[rand.nextInt(nmOne.length)];
 				String stoLoc = locOne[rand.nextInt(locOne.length)];
@@ -39,7 +111,7 @@ public class MakeDummy {
 				pstat.setString(1, stoNm);
 				pstat.setString(2, stoLoc);
 				pstat.setInt(3, rand.nextInt(100));
-				pstat.setInt(4, rand.nextInt(10)+1);
+				pstat.setInt(4, rand.nextInt(10) + 1);
 				pstat.execute();
 				pstat.close();
 			}
@@ -57,13 +129,28 @@ public class MakeDummy {
 			String typeOne = "식재료";
 			String typeTwo = "소모품";
 
+			
 			String[] nmOne = { "예가체프", "산토스", "수프리모", "AA 원두", "자바" };
 			String[] nmTwo = { "우유", "생크림", "딸기", "초코", "바닐라", "카라멜", "헤이즐넛", "설탕", "흑설탕", "얼음" };
 			String[] nmThr = { "휴지", "물티슈", "수저", "빨대", "시럽", "컵홀더" };
 
 			String[] homeOne = { "케냐", "콜롬비아", "에티오피아", "탄자니아", "브라질", "파나마", "인도네시아", "과테말라" };
 			String[] homeTwo = { "중국", "국산", "베트남" };
-
+			
+			String furnType = "";
+			String furnNm = "";
+			String furnHome = "";
+			switch (typeOne) {
+			case "식재료":
+				furnNm = nmOne[rand.nextInt(nmOne.length)] || nmTwo[rand.nextInt(nmTwo.length)];
+				furnHome = homeOne[rand.nextInt(homeOne.length)];
+				break;
+			case "소모품":
+				furnNm = nmThr[rand.nextInt(nmThr.length)];
+				furnHome = homeTwo[rand.nextInt(homeTwo.length)];
+			default:
+				break;
+			}
 			String sql = "INSERT INTO FURN_MA(FURN_NO, FURN_TYPE, FURN_NM, FURN_HOME, FURN_REM, EXPIR_DATE, OPEN_DATE, DEL_YN) VALUES(FURN_MA_SEQ.NEXTVAL, ?, ?, ?, ?, ?, ?, DEFAULT)";
 			pstat = conn.prepareStatement(sql);
 
