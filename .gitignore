@@ -12,3 +12,4 @@ src/DB
 *.tar.gz
 *.rar
 hs_err_pid*
+/bin/
