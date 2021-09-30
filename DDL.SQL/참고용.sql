@@ -16,7 +16,10 @@ WHERE
 MENU_NO = 8;
 
 CREATE SEQUENCE FURN_MA_SEQ;
+DROP SEQUENCE FURN_MA_SEQ;
+SELECT * FROM FURN_MA;
 ALTER TABLE FURN_MA MODIFY(FURN_HOME VARCHAR2(100));
+ALTER TABLE FURN_MA DROP COLUMN FURN_DATE;
 
 create sequence sto_ma_seq;
 drop sequence sto_ma_seq;
@@ -24,3 +27,10 @@ delete from sto_ma;
 alter table sto_ma modify(sto_grd varchar2(100));
 
 select * from sto_ma;
+
+SELECT * FROM MENU_MA;
+
+DROP SEQUENCE PARK_MA_SEQ;
+CREATE SEQUENCE PARK_MA_SEQ;
+SELECT * FROM PARK_MA;
+DELETE FROM PARK_MA;
