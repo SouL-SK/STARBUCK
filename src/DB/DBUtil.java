@@ -17,7 +17,7 @@ public class DBUtil {
 	 */
 	public Connection open() {
 		String url = "jdbc:oracle:thin:@kdw.cb0dtwejkkxo.us-east-2.rds.amazonaws.com:1521:KDW";
-		String id = "KDW";
+		String id = "kdw";
 		String pw = "rlaehddnr12";
 
 		try {

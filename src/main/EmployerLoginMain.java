@@ -1,4 +1,4 @@
-package main;
+	package main;
 
 import java.util.List;
 import java.sql.Connection;
@@ -10,6 +10,7 @@ import java.util.Scanner;
 import DB.DBUtil;
 import cus_ma.CusMa;
 import cus_ma.CusMaMain;
+import emp_ma.EmpMa;
 import emp_ma.EmpMaMain;
 import menu_ma.MenuMaMain;
 import prof_ma.ProfMaMain;
@@ -30,7 +31,7 @@ public class EmployerLoginMain {
 			System.out.printf("PASSWORD : ");
 			String pass = sc.next();
 			PreparedStatement pstat = null;
-			String sql = "SELECT CUS_NO, CUS_NM FROM CUS_MA WHERE CUS_ID = \'" + id + "\' AND CUS_PASS = \'" + pass+"\'";
+			String sql = "SELECT EMP_NO, EMP_NM FROM EMP_MA WHERE EMP_ID = \'" + id + "\' AND EMP_PASS = \'" + pass+"\'";
 			ResultSet rs = null;
 			pstat = conn.prepareStatement(sql);
 			rs = pstat.executeQuery();

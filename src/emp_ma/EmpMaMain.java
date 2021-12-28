@@ -25,16 +25,16 @@ public class EmpMaMain {
 		int key = sc.nextInt();
 		switch (key) {
 		case 1:
-			EmpMaMain c = new EmpMaMain(user, "create employee", 1);
+			EmpMaMain c = new EmpMaMain(user);
 			break;
 		case 2:
-			EmpMaMain r = new EmpMaMain(user, "read employee", 2);
+			EmpMaMain r = new EmpMaMain(user);
 			break;
 		case 3:
-			EmpMaMain u = new EmpMaMain(user, "update employee", 3);
+			EmpMaMain u = new EmpMaMain(user);
 			break;
 		case 4:
-			EmpMaMain d = new EmpMaMain(user, "delete employee", 4);
+			EmpMaMain d = new EmpMaMain(user);
 			break;
 		default:
 			System.out.println("위에 번호 4가지 중에 고르세요");
@@ -85,8 +85,8 @@ public class EmpMaMain {
 				ResultSet rs = null;
 				rs = pstst.executeQuery();
 				while (rs.next()) {
-					EmpMa menu = new EmpMa(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getDate(5),
-							rs.getInt(6), rs.getString(7));
+					EmpMa menu = new EmpMa(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getDate(6), rs.getDate(8),
+							rs.getInt(8), rs.getString(9));
 					empMa.add(menu);
 				}
 				System.out.println(empMa.toString());

@@ -5,21 +5,40 @@ import java.sql.Date;
 public class EmpMa {
 	private int empNo;
 	private String empNm;
+	private String empId;
+	private String empPass;
 	private String empGrd;
 	private Date hireDate;
 	private Date fireDate;
 	private int stoNo;
 	private String delYn;
 
-	public EmpMa(int empNo, String empNm, String empGrd, Date hireDate, Date fireDate, int stoNo, String delYn) {
+	
+	public EmpMa() {
+		super();
+	}
+
+	public EmpMa(int empNo, String empNm, String empId, String empPass, String empGrd, Date hireDate, Date fireDate,
+			int stoNo, String delYn) {
 		this.empNo = empNo;
 		this.empNm = empNm;
+		this.empId = empId;
+		this.empPass = empPass;
 		this.empGrd = empGrd;
 		this.hireDate = hireDate;
 		this.fireDate = fireDate;
 		this.stoNo = stoNo;
 		this.delYn = delYn;
 	}
+
+	
+	public EmpMa(int empNo, String empNm, String empId, String empPass) {
+		this.empNo = empNo;
+		this.empNm = empNm;
+		this.empId = empId;
+		this.empPass = empPass;
+	}
+
 
 	@Override
 	public String toString() {
@@ -83,4 +102,25 @@ public class EmpMa {
 		this.delYn = delYn;
 	}
 
+
+	public String getEmpId() {
+		return empId;
+	}
+
+
+	public void setEmpId(String empId) {
+		this.empId = empId;
+	}
+
+
+	public String getEmpPass() {
+		return empPass;
+	}
+
+
+	public void setEmpPass(String empPass) {
+		this.empPass = empPass;
+	}
+
+	
 }
